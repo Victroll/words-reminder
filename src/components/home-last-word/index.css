@@ -1,0 +1,9 @@
+.home-last-word {
+  background-color: #1d2120;
+  color: white;
+  height: 19%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: underline;
+}

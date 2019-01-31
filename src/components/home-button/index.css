@@ -1,0 +1,54 @@
+.home-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 27%;
+  background-color: #bcd5d1;
+}
+
+button {
+  font-size: xx-large !important;
+  height: 80px !important;
+  width: 80px !important;
+  background-color: #5a5c51 !important;
+  color: white !important;
+  transition: 0.75s !important;
+}
+
+.input-mode {
+  background-color: transparent !important;
+  color: black !important;
+  font-size: medium !important;
+  box-shadow: none !important;
+  transform: translateX(-20px);
+}
+
+.icon {
+  font-size: x-large;
+}
+
+.input {
+  background-color: white;
+  border-color: #1d2120;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(29,33,32, 0.5);
+  padding-left: 5px;
+  transition: 1s;
+}
+
+.hide {
+  visibility: hidden;
+  width: 0;
+  opacity: 0;
+  display: none;
+}
+
+.show {
+  visibility: visible !important;
+  width: 50% !important;
+  opacity: 1;
+  display: block;
+  transform: translateX(40px);
+}
