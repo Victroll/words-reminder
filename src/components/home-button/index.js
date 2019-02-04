@@ -15,21 +15,46 @@ const Icons = {
 };
 
 class HomeButton extends Component {
-  toggleInput = () => {
-    console.log('asd');
+  constructor() {
+    super();
+
+    this.state = {
+      input: ''
+    };
+  }
+
+  onUpdateInput = newInput => {
+    this.setState({ input: newInput });
+  };
+
+  onClickHandler = () => {
+    const { inputMode, onClick } = this.props;
+    const { input } = this.state;
+    if (inputMode) {
+      onClick(input);
+      this.setState({
+        input: ''
+      });
+    } else {
+      onClick();
+    }
   };
 
   render() {
-    const { icon, inputMode, onClick } = this.props;
+    const { icon, inputMode } = this.props;
+    const { input } = this.state;
     return (
       <div className='home-button'>
-        <InputBase className={`input ${inputMode
-          ? 'show'
-          : 'hide'}`}
-          />
+        <InputBase 
+          className={`input ${inputMode
+            ? 'show'
+            : 'hide'}`}
+          value={input}
+          onChange={e => this.onUpdateInput(e.target.value)}
+        />
         <Fab
           className={`${inputMode && 'input-mode'}`}
-          onClick={onClick}
+          onClick={this.onClickHandler}
         >
           <i className={Icons[icon]} />
         </Fab>

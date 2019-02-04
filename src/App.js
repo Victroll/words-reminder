@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './utils/font-awesome/all';
 
+/** API */
+import { saveNewWord, getLastSavedWord } from './API';
+
 /** Components */
 import AppLayout from './components/app-layout/index';
 import HomeButton from './components/home-button/index';
@@ -13,8 +16,15 @@ class App extends Component {
     this.state = {
       showSearch: false,
       showAdd: false,
-      showEdit: false
+      showEdit: false,
+      lastWord: [null]
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      lastWord: getLastSavedWord()
+    });
   }
 
   onToggleInputs = id => {
@@ -44,11 +54,24 @@ class App extends Component {
     }
   };
 
+  onAddHandler = input => {
+    const { showAdd } = this.state;
+    this.onToggleInputs('add');
+    if (showAdd) {
+      saveNewWord(input)
+        .then(
+          res => this.setState({
+            lastWord: res
+          })
+        );
+    }
+  }
+
   render() {
-    const { showSearch, showAdd, showEdit } = this.state;
+    const { showSearch, showAdd, showEdit, lastWord } = this.state;
     return (
       <AppLayout>
-        <HomeLastWord />
+        <HomeLastWord lastWord={lastWord} />
         <HomeButton
           icon='search'
           inputMode={showSearch}
@@ -57,7 +80,7 @@ class App extends Component {
         <HomeButton
           icon='add'
           inputMode={showAdd}
-          onClick={() => this.onToggleInputs('add')}
+          onClick={this.onAddHandler}
         />
         <HomeButton
           icon='edit'

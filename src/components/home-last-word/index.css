@@ -5,5 +5,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: underline;
+}
+
+.fa-frown {
+  font-size: x-large;
+}
+
+h1 {
+  font-size: x-large;
+  padding: 0 1rem;
+}
+
+h2 {
+  text-transform: uppercase;
 }
