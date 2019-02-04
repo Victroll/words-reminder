@@ -55,3 +55,22 @@ export const getLastSavedWord = () => {
   }
   return [translations.word, translations.translatedWord];
 };
+
+/**
+ * Search a word in the dictionary. If it doesm¡t exist,
+ * translate it and save it
+ * @param {String} word Word to look for in the dictionary
+ */
+export const searchWord = word => {
+  const dictionary = JSON.parse(
+    window.localStorage.getItem(`${PRE}-${DICT}`)
+  );
+  if (dictionary === null || dictionary[word] === undefined) {
+    return saveNewWord(word)
+      .then(res => res);
+  } else {
+    return new Promise(resolve => {
+      resolve([word, dictionary[word]]);
+    });
+  }
+};
