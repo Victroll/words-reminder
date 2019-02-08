@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 
 /** MUI Components */
@@ -14,54 +14,40 @@ const Icons = {
   add: 'fas fa-plus'
 };
 
-class HomeButton extends Component {
-  constructor() {
-    super();
+const HomeButton = ({ icon, inputMode, onClick }) => {
+  const [input, setInput] = useState('');
 
-    this.state = {
-      input: ''
-    };
-  }
-
-  onUpdateInput = newInput => {
-    this.setState({ input: newInput });
+  const onUpdateInput = newInput => {
+    setInput(newInput);
   };
 
-  onClickHandler = () => {
-    const { inputMode, onClick } = this.props;
-    const { input } = this.state;
+  const onClickHandler = () => {
     if (inputMode) {
       onClick(input);
-      this.setState({
-        input: ''
-      });
+      setInput('');
     } else {
       onClick();
     }
   };
 
-  render() {
-    const { icon, inputMode } = this.props;
-    const { input } = this.state;
-    return (
-      <div className='home-button'>
-        <InputBase 
-          className={`input ${inputMode
-            ? 'show'
-            : 'hide'}`}
-          value={input}
-          onChange={e => this.onUpdateInput(e.target.value)}
-        />
-        <Fab
-          className={`${inputMode && 'input-mode'}`}
-          onClick={this.onClickHandler}
-        >
-          <i className={Icons[icon]} />
-        </Fab>
-      </div>
-    );
-  }
-}
+  return (
+    <div className='home-button'>
+      <InputBase 
+        className={`input ${inputMode
+          ? 'show'
+          : 'hide'}`}
+        value={input}
+        onChange={e => onUpdateInput(e.target.value)}
+      />
+      <Fab
+        className={`${inputMode && 'input-mode'}`}
+        onClick={onClickHandler}
+      >
+        <i className={Icons[icon]} />
+      </Fab>
+    </div>
+  );
+};
 
 HomeButton.propTypes = {
   icon: PropTypes.string,
