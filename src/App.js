@@ -9,6 +9,7 @@ import AppLayout from './components/app-layout/index';
 import HomeButton from './components/home-button/index';
 import HomeLastWord from './components/home-last-word';
 import TranslationModal from './components/translation-modal';
+import InfoDialog from './components/info-dialog';
 
 const App = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -17,6 +18,7 @@ const App = () => {
   const [lastWord, setLastWord] = useState([null]);
   const [showTranlation, setShowTranlation] = useState(false);
   const [searchedWord, setSearchedWord] = useState(['', '']);
+  const [addedWord, setAddedWord] = useState(false);
 
   useEffect(() => {
     setLastWord(getLastSavedWord());
@@ -47,7 +49,10 @@ const App = () => {
     if (showAdd && input !== '') {
       saveNewWord(input)
         .then(
-          res => setLastWord(res)
+          res => {
+            setAddedWord(true);
+            setLastWord(res);
+          }
         );
     }
   };
@@ -87,6 +92,7 @@ const App = () => {
           onClose={() => setShowTranlation(false)}
         />
       )}
+      <InfoDialog isOpen={addedWord} onClose={() => setAddedWord(false)} />
     </AppLayout>
   );
 };

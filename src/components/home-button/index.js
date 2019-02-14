@@ -24,6 +24,7 @@ const HomeButton = ({ icon, inputMode, onClick }) => {
   const [previousInputMode, setPreviousInputMode] = useState(inputMode);
 
   useEffect(() => {
+    // When inputMode changes from true to false, hide the Input component
     if (previousInputMode && !inputMode) {
       setFadeOutAnimation(true);
     }
