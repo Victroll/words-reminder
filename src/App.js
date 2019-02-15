@@ -20,7 +20,7 @@ const App = () => {
 
   useEffect(() => {
     setLastWord(getLastSavedWord());
-  }, [lastWord]);
+  }, []);
 
   const onToggleInputs = id => {
     switch (id) {
