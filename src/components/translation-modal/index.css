@@ -12,10 +12,14 @@
   border-width: 1px;
   border-radius: 4px;
   box-shadow: 2px 2px 4px rgba(29,33,32, 0.5);
+  background-color: #EBD5BD;
+  color: #454545;
+  border-color: #454545;
 }
 
 .modal-content > hr {
   width: 100%;
+  border-color: #454545;
 }
 
 .modal-content > h1 {

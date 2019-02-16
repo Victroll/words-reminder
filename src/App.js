@@ -17,8 +17,8 @@ const App = () => {
   const [showAdd, setShowAdd] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [lastWord, setLastWord] = useState([null]);
-  const [showTranlation, setShowTranlation] = useState(false);
-  const [searchedWord, setSearchedWord] = useState(['', '']);
+  const [showTranlation, setShowTranlation] = useState(true);
+  const [searchedWord, setSearchedWord] = useState(['asd', 'qwe']);
   const [addedWord, setAddedWord] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
