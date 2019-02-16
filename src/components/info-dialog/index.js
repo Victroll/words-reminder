@@ -4,15 +4,15 @@ import { PropTypes } from 'prop-types';
 /** Material UI */
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Slide from '@material-ui/core/Slide';
 
-const Transition = props => <Slide direction='up' {...props} />;
+/** CSS */
+import './index.css';
 
 const InfoDialog = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => onClose(), 2500);
+      setTimeout(() => onClose(), 1500);
     }
   }, [isOpen]);
 
@@ -20,9 +20,13 @@ const InfoDialog = ({ isOpen, onClose }) => {
     <Dialog
       open={isOpen}
       onClose={onClose}
-      TransitionComponent={Transition}
+      className='info-dialog'
     >
-      <DialogTitle>Word added!</DialogTitle>
+      <div className='info-dialog-container'>
+        <DialogTitle className='check-container'>
+          <i className='fas fa-check' />
+        </DialogTitle>
+      </div>
     </Dialog>
   );
 };

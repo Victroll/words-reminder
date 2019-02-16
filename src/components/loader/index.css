@@ -1,0 +1,101 @@
+.loading-container {
+  width: 50vw;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.loader div[class*=MuiDialog] {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+@keyframes searching {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  50% {
+    transform: rotateZ(180deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes appearing-1 {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: translateX(-150px);
+  }
+}
+
+@keyframes appearing-2 {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: translateX(150px);
+  }
+}
+
+.search-container {
+  height: 8rem;
+}
+
+.search-container > h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #EBD5BD;
+  animation: searching 2.5s infinite linear;
+  transform-origin: 50% 200%;
+}
+
+.search-container > h2 > svg {
+  animation: searching 2.5s infinite linear;
+  animation-direction: reverse;
+  font-size: xx-large;
+}
+
+.animated-object {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+.animated-object::after {
+  content: '?';
+}
+
+.object-1 {
+  position: absolute;
+  background-color: #EBD5BD;
+  width: 2rem;
+  height: 2rem;
+  animation: appearing-1 2s infinite !important;
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  top: calc(50% - 1rem);
+  left: calc(50% - 1rem);
+}
+
+.object-2 {
+  position: absolute;
+  background-color: #EBD5BD;
+  width: 2rem;
+  height: 2rem;
+  animation: appearing-2 2s infinite !important;
+  animation-delay: 1s !important;
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  top: calc(50% - 1rem);
+  left: calc(50% - 1rem);
+}

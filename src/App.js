@@ -10,6 +10,7 @@ import HomeButton from './components/home-button/index';
 import HomeLastWord from './components/home-last-word';
 import TranslationModal from './components/translation-modal';
 import InfoDialog from './components/info-dialog';
+import Loader from './components/loader/index';
 
 const App = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -19,6 +20,7 @@ const App = () => {
   const [showTranlation, setShowTranlation] = useState(false);
   const [searchedWord, setSearchedWord] = useState(['', '']);
   const [addedWord, setAddedWord] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setLastWord(getLastSavedWord());
@@ -47,9 +49,11 @@ const App = () => {
   const onAddHandler = input => {
     onToggleInputs('add');
     if (showAdd && input !== '') {
+      setIsLoading(true);
       saveNewWord(input)
         .then(
           res => {
+            setIsLoading(false);
             setAddedWord(true);
             setLastWord(res);
           }
@@ -60,9 +64,11 @@ const App = () => {
   const onSearchHandler = input => {
     onToggleInputs('search');
     if (showSearch && input !== '') {
+      setIsLoading(true);
       searchWord(input).then(pair => {
         setShowTranlation(true);
         setSearchedWord(pair);
+        setIsLoading(false);
       });
     }
   };
@@ -93,6 +99,7 @@ const App = () => {
         />
       )}
       <InfoDialog isOpen={addedWord} onClose={() => setAddedWord(false)} />
+      {isLoading && <Loader />}
     </AppLayout>
   );
 };
