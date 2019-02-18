@@ -1,4 +1,4 @@
-.info-dialog div[class*=MuiDialog] {
+.info-dialog > div > div {
   background-color: transparent !important;
   box-shadow: none !important;
 }

@@ -5,7 +5,7 @@
   background: transparent;
 }
 
-.loader div[class*=MuiDialog] {
+.loader > div > div {
   background-color: transparent !important;
   box-shadow: none !important;
 }
