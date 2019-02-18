@@ -1,0 +1,43 @@
+.dictionary-item {
+  background-color: #EBD5BD !important;
+  box-shadow: none !important;
+  border-style: solid;
+  border-color: #454545;
+  border-top-width: 1px;
+  width: 90%;
+}
+
+.dictionary-summary {
+  justify-content: left !important;
+}
+
+.dictionary-summary > div {
+  align-items: center;
+  overflow: hidden;
+}
+
+.dictionary-summary > div > h1 {
+  font-size: 1rem;
+  padding-right: 1rem;
+  width: 60%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.dictionary-summary > div > h1::after {
+  content: ':';
+}
+
+.dictionary-summary > div > p {
+  width: 40%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.dictionary-detail li {
+  padding: 0.4rem 0;
+}
+
+.dictionary-detail li::before {
+  content: '-';
+}

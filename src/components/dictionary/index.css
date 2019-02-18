@@ -1,0 +1,61 @@
+.dictionary {
+  background: #EBD5BD;
+  position: absolute;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(29,33,32, 0.5);
+  z-index: 1;
+  animation: fade-in 1s cubic-bezier(0.190, 1.000, 0.220, 1.000) forwards;
+  animation-delay: 0.3s;
+  top: -70vh;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  border: 1rem solid transparent;
+  border-left: 0;
+  border-right: 0;
+}
+
+.dictionary.fade-out {
+  animation: fade-out 0.75s cubic-bezier(0.190, 1.000, 0.220, 1.000) !important;
+}
+
+.dictionary-content {
+  flex-basis: 100%;
+}
+
+@keyframes fade-out {
+  from {
+    width: 94vw;
+    height: 94vh;
+    opacity: 1;
+  }
+  to {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    top: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    width: 0;
+    height: 0;
+    left: 90vw;
+    opacity: 0;
+  }
+  to {
+    width: 94vw;
+    height: 94vh;
+    left: 3vw;
+    opacity: 1;
+  }
+}
+
+h2 {
+  padding: 1rem 0;
+}

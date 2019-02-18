@@ -7,13 +7,11 @@ import { childrenModel } from '../../utils/models';
 import './index.css';
 
 const AppLayout = ({ children }) => (
-  <div className='app-layout'>
-    {children}
-  </div>
+  <div className="app-layout">{children}</div>
 );
 
 AppLayout.propTypes = {
-  children: childrenModel
+  children: childrenModel.isRequired
 };
 
 export default AppLayout;

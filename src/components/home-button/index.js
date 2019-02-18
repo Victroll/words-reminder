@@ -40,10 +40,10 @@ const HomeButton = ({ icon, inputMode, onClick }) => {
    * If inputMode is true, the parent onClick function is called
    * with the content of the Input element. Also, the text is cleared
    * and the fade out animation is activated.
-   * 
+   *
    * If inputMode is false, call onClick function without content
    * and show the Input element.
-   * 
+   *
    * @param {Event} e Mouse event
    */
   const onClickHandler = e => {
@@ -66,26 +66,23 @@ const HomeButton = ({ icon, inputMode, onClick }) => {
 
   return (
     <div className='home-button' onClick={onBlurComponent}> {/* eslint-disable-line */}
-    {showInput && (
-      <InputBase
-        className={`input ${fadeOutAnimation && 'fade-out'}`}
-        value={input}
-        onChange={e => onUpdateInput(e.target.value)}
-        onClick={e => e.stopPropagation()}
-        autoFocus
-        onAnimationEnd={({ animationName }) => {
-          // Hide the Input element when the fade out animation finish
-          if (animationName === 'fade-out') {
-            setShowInput(false);
-            setFadeOutAnimation(false);
-          }
-        }}
-      />
-    )}
-      <Fab
-        className={`${inputMode && 'input-mode'}`}
-        onClick={onClickHandler}
-      >
+      {showInput && (
+        <InputBase
+          className={`input ${fadeOutAnimation && 'fade-out'}`}
+          value={input}
+          onChange={e => onUpdateInput(e.target.value)}
+          onClick={e => e.stopPropagation()}
+          autoFocus
+          onAnimationEnd={({ animationName }) => {
+            // Hide the Input element when the fade out animation finish
+            if (animationName === 'fade-out-input') {
+              setShowInput(false);
+              setFadeOutAnimation(false);
+            }
+          }}
+        />
+      )}
+      <Fab className={`${inputMode && 'input-mode'}`} onClick={onClickHandler}>
         <i className={Icons[icon]} />
       </Fab>
     </div>
@@ -93,7 +90,7 @@ const HomeButton = ({ icon, inputMode, onClick }) => {
 };
 
 HomeButton.propTypes = {
-  icon: PropTypes.string,
+  icon: PropTypes.string.isRequired,
   inputMode: PropTypes.bool,
   onClick: PropTypes.func
 };

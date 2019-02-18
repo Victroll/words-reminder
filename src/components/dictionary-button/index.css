@@ -1,0 +1,44 @@
+.dictionary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 27%;
+  background-color: #DAC3AC;
+  border-bottom: 1px solid rgb(190, 160, 145);
+  position: relative;
+}
+
+.dictionary-button > button {
+  font-size: xx-large !important;
+  height: 80px !important;
+  width: 80px !important;
+  background-color: #454545 !important;
+  color: #EBD5BD !important;
+  transition: all cubic-bezier(0.190, 1.000, 0.220, 1.000) 1s !important;
+  position: absolute !important;
+  z-index: 1;
+  transform-origin: 50%;
+}
+
+@keyframes change-color {
+  from {
+    color: #EBD5BD;
+    background-color: #454545;
+  }
+  to {
+    color: #454545;
+    background-color: transparent;
+  }
+}
+
+.dictionary-mode {
+  background-color: transparent !important;
+  /* color: #454545 !important; */
+  box-shadow: none !important;
+  transform: translateY(-80vh) translateX(40vw);
+  animation: change-color 0.5s linear 0.2s forwards;
+}
+
+.icon {
+  font-size: x-large;
+}

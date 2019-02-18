@@ -8,19 +8,20 @@
   position: relative;
 }
 
-button {
+.home-button button {
   font-size: xx-large !important;
   height: 80px !important;
   width: 80px !important;
-  background-color: #454545 !important;
-  color: #EBD5BD !important;
+  background-color: #454545;
+  color: #EBD5BD;
   transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.45s !important;
   position: absolute !important;
   z-index: 1;
   transform-origin: 50%;
-  /*-webkit-box-shadow: 0px 0px 32px -2px rgba(142,116,103,1) !important;
-  -moz-box-shadow: 0px 0px 32px -2px rgba(142,116,103,1) !important;
-  box-shadow: 0px 0px 32px -2px rgba(142,116,103,1) !important;*/
+}
+
+.home-button button:hover {
+  background-color: #454545;
 }
 
 .input-mode {
@@ -35,7 +36,7 @@ button {
   font-size: x-large;
 }
 
-@keyframes fade-in {
+@keyframes fade-in-input {
   from {
     transform: scaleX(0);
     opacity: 0;
@@ -48,7 +49,7 @@ button {
   }
 }
 
-@keyframes fade-out {
+@keyframes fade-out-input {
   from {
     transform: scaleX(1);
     opacity: 1;
@@ -70,7 +71,7 @@ button {
   box-shadow: 2px 2px 4px rgba(29,33,32, 0.5);
   padding-left: 5px;
   transform-origin: 100% 50%;
-  animation-name: fade-in;
+  animation-name: fade-in-input !important;
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
   transform: scaleX(0);
@@ -79,5 +80,5 @@ button {
 }
 
 .fade-out {
-  animation-name: fade-out !important;
+  animation-name: fade-out-input !important;
 }
