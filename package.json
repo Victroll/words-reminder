@@ -56,7 +56,8 @@
     "webpack": "4.19.1",
     "webpack-dev-server": "3.1.14",
     "webpack-manifest-plugin": "2.0.4",
-    "workbox-webpack-plugin": "3.6.3"
+    "workbox-webpack-plugin": "3.6.3",
+    "serve": "^10.1.2"
   },
   "scripts": {
     "dev": "node scripts/start.js",
@@ -126,7 +127,6 @@
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-jest": "^22.2.1",
     "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "1.16.4",
-    "serve": "^10.1.2"
+    "prettier": "1.16.4"
   }
 }
