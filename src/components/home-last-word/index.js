@@ -9,13 +9,15 @@ import './index.css';
 
 const HomeLastWord = ({ lastWord }) => (
   <div className='home-last-word'>
-    <h2>
-      {homeTxt.lastWords}
-    </h2>
+    {lastWord[0]
+      ? <h2>{homeTxt.lastWords}</h2>
+      : <h1>{homeTxt.addOne}</h1>
+    }
     <h1>
       {lastWord[0]
         ? lastWord[0]
-        : <i className='far fa-frown'/>}
+        : null
+      }
     </h1>
   </div>
 );
