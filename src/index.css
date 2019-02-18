@@ -50,9 +50,13 @@ h1 {
   letter-spacing: 1px;
   font-weight: 700 !important;
 }
-
+h2 {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
 #root {
-	height: 100vh
+  height: 100vh;
+  overflow: hidden;
 }
 .content {
 	padding: 0 10vw;

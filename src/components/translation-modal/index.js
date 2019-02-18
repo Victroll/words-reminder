@@ -8,13 +8,8 @@ import Modal from '@material-ui/core/Modal';
 import './index.css';
 
 const TranslationModal = ({ word, translatedWord, onClose }) => (
-  <Modal
-    className='modal-container'
-    onClose={onClose}
-    disableAutoFocus
-    open
-  >
-    <div className='modal-content'>
+  <Modal className="modal-container" onClose={onClose} disableAutoFocus open>
+    <div className="modal-content">
       <h1>{word}</h1>
       <hr />
       <span>{translatedWord}</span>
@@ -23,8 +18,8 @@ const TranslationModal = ({ word, translatedWord, onClose }) => (
 );
 
 TranslationModal.propTypes = {
-  word: PropTypes.string,
-  translatedWord: PropTypes.string,
+  word: PropTypes.string.isRequired,
+  translatedWord: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired
 };
 

@@ -1,43 +1,8 @@
 {
-  "extends": ["airbnb", "eslint:recommended", "plugin:react/recommended", "prettier", "prettier/react"],
-  "plugins": ["react", "jest", "prettier"],
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-        "jsx": true
-    }
-  },
-  "parser": "babel-eslint",
+  "extends": [
+    "@daosro/eslint-config"
+  ],
   "rules": {
-    "react/jsx-filename-extension": 0,
-    "react/require-default-props": 0,
-    "jest/no-disabled-tests": "error",
-    "jest/no-focused-tests": "error",
-    "jest/no-identical-title": "error",
-    "jest/valid-expect": "error",
-    "react/no-find-dom-node": 0,
-    "no-useless-escape": 0,
-    "no-console": 0,
-    "eol-last": 2,
-    "max-len": ["error", 80],
-    "import/prefer-default-export": 0,
-    "no-multiple-empty-lines": ["error", {
-      "max": 1
-    }],
-    "prefer-destructuring": ["error", {
-      "array": false,
-      "object": true
-    }, {
-      "enforceForRenamedProperties": false
-    }],
-    "semi": ["error", "always"],
-    "no-nested-ternary": "error",
-    "multiline-ternary": ["error", "always"],
-    "react/no-array-index-key": 0
-  },
-  "env": {
-    "browser": true,
-    "jest/globals": true
+    "no-undef": "off"
   }
 }

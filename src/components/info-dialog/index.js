@@ -9,7 +9,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import './index.css';
 
 const InfoDialog = ({ isOpen, onClose }) => {
-
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => onClose(), 1500);
@@ -17,14 +16,10 @@ const InfoDialog = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   return (
-    <Dialog
-      open={isOpen}
-      onClose={onClose}
-      className='info-dialog'
-    >
-      <div className='info-dialog-container'>
-        <DialogTitle className='check-container'>
-          <i className='fas fa-check' />
+    <Dialog open={isOpen} onClose={onClose} className="info-dialog">
+      <div className="info-dialog-container">
+        <DialogTitle className="check-container">
+          <i className="fas fa-check" />
         </DialogTitle>
       </div>
     </Dialog>
@@ -32,8 +27,8 @@ const InfoDialog = ({ isOpen, onClose }) => {
 };
 
 InfoDialog.propTypes = {
-  onClose: PropTypes.func,
-  isOpen: PropTypes.bool
+  onClose: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired
 };
 
 export default InfoDialog;

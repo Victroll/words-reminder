@@ -8,13 +8,13 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import './index.css';
 
 const Loader = () => (
-  <Dialog open className='loader'>
-    <div className='loading-container'>
-      <DialogTitle className='search-container'>
-        <i className='fas fa-search' />
+  <Dialog open className="loader">
+    <div className="loading-container">
+      <DialogTitle className="search-container">
+        <i className="fas fa-search" />
       </DialogTitle>
-      <div className='animated-object object-1' />
-      <div className='animated-object object-2' />
+      <div className="animated-object object-1" />
+      <div className="animated-object object-2" />
     </div>
   </Dialog>
 );

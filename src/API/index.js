@@ -17,29 +17,29 @@ const getUrl = word =>
  * @param {String} word Word to translate and save
  */
 export const saveNewWord = word =>
-  axios.get(getUrl(word))
-    .then(({ data: { responseData: { translatedText } }}) => {
-      // Added to Last Word
+  axios
+    .get(getUrl(word))
+    .then(({ data: { responseData: { translatedText: best }, matches } }) => {
+      // Add to Last Word
       window.localStorage.setItem(
         `${PRE}-${LW}`,
         JSON.stringify({
-          word,
-          translatedWord: translatedText
+          word
         })
       );
-      // Added to dictionary
+      // Add to dictionary
       let dictionary = JSON.parse(
         window.localStorage.getItem(`${PRE}-${DICT}`)
       );
       if (dictionary === null) {
         dictionary = {};
       }
-      dictionary[word] = translatedText;
-      window.localStorage.setItem(
-        `${PRE}-${DICT}`,
-        JSON.stringify(dictionary)
-      );
-      return [word, translatedText];
+      dictionary[word] = {
+        best,
+        translations: matches.map(match => match.translation)
+      };
+      window.localStorage.setItem(`${PRE}-${DICT}`, JSON.stringify(dictionary));
+      return word;
     });
 
 /**
@@ -49,11 +49,8 @@ export const saveNewWord = word =>
  * }
  */
 export const getLastSavedWord = () => {
-  let translations = JSON.parse(window.localStorage.getItem(`${PRE}-${LW}`));
-  if (translations === null) {
-    return [null];
-  }
-  return [translations.word, translations.translatedWord];
+  const lastWord = JSON.parse(window.localStorage.getItem(`${PRE}-${LW}`));
+  return lastWord ? lastWord.word : null;
 };
 
 /**
@@ -62,15 +59,29 @@ export const getLastSavedWord = () => {
  * @param {String} word Word to look for in the dictionary
  */
 export const searchWord = word => {
-  const dictionary = JSON.parse(
-    window.localStorage.getItem(`${PRE}-${DICT}`)
-  );
+  const dictionary = JSON.parse(window.localStorage.getItem(`${PRE}-${DICT}`));
   if (dictionary === null || dictionary[word] === undefined) {
-    return saveNewWord(word)
-      .then(res => res);
-  } else {
-    return new Promise(resolve => {
-      resolve([word, dictionary[word]]);
+    return saveNewWord(word).then(() => {
+      const d = JSON.parse(window.localStorage.getItem(`${PRE}-${DICT}`));
+      return [word, d[word].best];
     });
   }
+  return new Promise(resolve => {
+    resolve([word, dictionary[word].best]);
+  });
+};
+
+/**
+ * Retrieves all the stored words
+ */
+export const getAll = () => {
+  const dictionary = JSON.parse(window.localStorage.getItem(`${PRE}-${DICT}`));
+  if (dictionary === null) {
+    return [];
+  }
+  return Object.keys(dictionary).map(w => ({
+    word: w,
+    best: dictionary[w].best,
+    translations: dictionary[w].translations
+  }));
 };

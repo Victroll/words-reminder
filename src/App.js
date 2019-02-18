@@ -11,12 +11,13 @@ import HomeLastWord from './components/home-last-word';
 import TranslationModal from './components/translation-modal';
 import InfoDialog from './components/info-dialog';
 import Loader from './components/loader/index';
+import DictionaryButton from './components/dictionary-button';
 
 const App = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
-  const [lastWord, setLastWord] = useState([null]);
+  const [lastWord, setLastWord] = useState(null);
   const [showTranlation, setShowTranlation] = useState(false);
   const [searchedWord, setSearchedWord] = useState(['', '']);
   const [addedWord, setAddedWord] = useState(false);
@@ -43,6 +44,7 @@ const App = () => {
         setShowAdd(false);
         setShowEdit(!showEdit);
         break;
+      default:
     }
   };
 
@@ -50,14 +52,11 @@ const App = () => {
     onToggleInputs('add');
     if (showAdd && input !== '') {
       setIsLoading(true);
-      saveNewWord(input)
-        .then(
-          res => {
-            setIsLoading(false);
-            setAddedWord(true);
-            setLastWord(res);
-          }
-        );
+      saveNewWord(input).then(res => {
+        setIsLoading(false);
+        setAddedWord(true);
+        setLastWord(res);
+      });
     }
   };
 
@@ -77,18 +76,13 @@ const App = () => {
     <AppLayout>
       <HomeLastWord lastWord={lastWord} />
       <HomeButton
-        icon='search'
+        icon="search"
         inputMode={showSearch}
         onClick={onSearchHandler}
       />
-      <HomeButton
-        icon='add'
-        inputMode={showAdd}
-        onClick={onAddHandler}
-      />
-      <HomeButton
-        icon='edit'
-        inputMode={showEdit}
+      <HomeButton icon="add" inputMode={showAdd} onClick={onAddHandler} />
+      <DictionaryButton
+        dictionaryMode={showEdit}
         onClick={() => onToggleInputs('edit')}
       />
       {showTranlation && (
