@@ -4,6 +4,9 @@ import './utils/font-awesome/all';
 /** API */
 import { saveNewWord, getLastSavedWord, searchWord } from './API';
 
+/** IndexedDB */
+import wrDB from './indexedDB';
+
 /** Components */
 import AppLayout from './components/app-layout/index';
 import HomeButton from './components/home-button/index';
@@ -48,6 +51,7 @@ const App = () => {
 
   const onAddHandler = input => {
     onToggleInputs('add');
+    console.log(wrDB.getWord('asd'));
     if (showAdd && input !== '') {
       setIsLoading(true);
       saveNewWord(input)
@@ -56,6 +60,7 @@ const App = () => {
             setIsLoading(false);
             setAddedWord(true);
             setLastWord(res);
+            wrDB.addWord('asd', ['qwe', 'dcwe']);
           }
         );
     }
