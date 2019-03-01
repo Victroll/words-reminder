@@ -12,6 +12,7 @@ import TranslationModal from './components/translation-modal';
 import InfoDialog from './components/info-dialog';
 import Loader from './components/loader/index';
 import DictionaryButton from './components/dictionary-button';
+import GitHubCorner from './components/GitHub-corner/index';
 
 const App = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -67,6 +68,7 @@ const App = () => {
       searchWord(input).then(pair => {
         setShowTranlation(true);
         setSearchedWord(pair);
+        setLastWord(getLastSavedWord());
         setIsLoading(false);
       });
     }
@@ -74,6 +76,7 @@ const App = () => {
 
   return (
     <AppLayout>
+      <GitHubCorner />
       <HomeLastWord lastWord={lastWord} />
       <HomeButton
         icon="search"
